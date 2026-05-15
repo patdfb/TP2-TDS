@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Flags Quiz</string>
+
+    <!-- Welcome screen -->
+    <string name="game_title">Flags Quiz</string>
+    <string name="game_description">How well do you know the world\u2019s flags?\nAnswer 10 questions and test your geography!</string>
+    <string name="start_game">Start Game</string>
+
+    <!-- Quiz fragment -->
+    <string name="question_label">Question %1$d / %2$d</string>
+    <string name="score_header">Score: %1$d</string>
+    <string name="next_question">Next &#8594;</string>
+
+    <!-- Score fragment -->
+    <string name="score_value">%1$d / %2$d correct</string>
+    <string name="score_perfect">&#127942; Perfect score! Excellent!</string>
+    <string name="score_good">&#11088; Great job! Well done!</string>
+    <string name="score_try_again">&#128170; Keep practising! You&#8217;ll do better next time.</string>
+    <string name="play_again">Play Again</string>
+    <string name="exit_game">Exit</string>
+</resources>

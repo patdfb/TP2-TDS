@@ -1,0 +1,362 @@
+[
+  {
+    "id": 1,
+    "nome": "Omelete de Tomate e Queijo",
+    "categoria": "Vegetariano",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Ovos", "quantidade": 8.0, "unidade": "unidades" },
+      { "item": "Tomate", "quantidade": 2.0, "unidade": "unidades" },
+      { "item": "Queijo Ralado", "quantidade": 100.0, "unidade": "gramas" }
+    ],
+    "passos": ["Bata os ovos.", "Pique os tomates.", "Leve à frigideira."]
+  },
+  {
+    "id": 2,
+    "nome": "Frango com Natas",
+    "categoria": "Carne",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Peito de Frango", "quantidade": 600.0, "unidade": "gramas" },
+      { "item": "Natas", "quantidade": 400.0, "unidade": "ml" },
+      { "item": "Cogumelos", "quantidade": 200.0, "unidade": "gramas" }
+    ],
+    "passos": ["Corte o frango.", "Cozinhe até dourar.", "Junte as natas."]
+  },
+  {
+    "id": 3,
+    "nome": "Salada de Atum e Feijão",
+    "categoria": "Peixe",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Atum em Lata", "quantidade": 3.0, "unidade": "unidades" },
+      { "item": "Feijão Frade Cozido", "quantidade": 500.0, "unidade": "gramas" },
+      { "item": "Cebola", "quantidade": 1.0, "unidade": "unidade" }
+    ],
+    "passos": ["Escorra o atum.", "Misture com o feijão.", "Tempere com azeite."]
+  },
+  {
+    "id": 4,
+    "nome": "Arroz de Marisco",
+    "categoria": "Peixe",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Arroz", "quantidade": 300.0, "unidade": "gramas" },
+      { "item": "Marisco", "quantidade": 500.0, "unidade": "gramas" },
+      { "item": "Caldo de Peixe", "quantidade": 900.0, "unidade": "ml" }
+    ],
+    "passos": ["Refogue o arroz.", "Junte o marisco.", "Adicione o caldo quente."]
+  },
+  {
+    "id": 5,
+    "nome": "Panquecas de Aveia",
+    "categoria": "Pequeno-almoço",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Farinha de Aveia", "quantidade": 200.0, "unidade": "gramas" },
+      { "item": "Bananas", "quantidade": 2.0, "unidade": "unidades" },
+      { "item": "Leite", "quantidade": 250.0, "unidade": "ml" }
+    ],
+    "passos": ["Esmague as bananas.", "Misture os ingredientes.", "Cozinhe na frigideira."]
+  },
+  {
+    "id": 6,
+    "nome": "Esparguete à Bolonhesa",
+    "categoria": "Carne",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Esparguete", "quantidade": 500.0, "unidade": "gramas" },
+      { "item": "Carne Picada", "quantidade": 400.0, "unidade": "gramas" },
+      { "item": "Polpa de Tomate", "quantidade": 200.0, "unidade": "ml" }
+    ],
+    "passos": ["Coza a massa.", "Refogue a carne.", "Adicione o tomate."]
+  },
+  {
+    "id": 7,
+    "nome": "Sopa de Legumes",
+    "categoria": "Vegetariano",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Batatas", "quantidade": 3.0, "unidade": "unidades" },
+      { "item": "Cenouras", "quantidade": 2.0, "unidade": "unidades" },
+      { "item": "Curgete", "quantidade": 1.0, "unidade": "unidade" }
+    ],
+    "passos": ["Corte os legumes.", "Coza em água e sal.", "Triture tudo."]
+  },
+  {
+    "id": 8,
+    "nome": "Caril de Grão",
+    "categoria": "Vegetariano",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Grão de Bico", "quantidade": 400.0, "unidade": "gramas" },
+      { "item": "Leite de Coco", "quantidade": 400.0, "unidade": "ml" },
+      { "item": "Caril", "quantidade": 2.0, "unidade": "colheres de chá" }
+    ],
+    "passos": ["Refogue a cebola com caril.", "Junte o grão.", "Adicione o leite de coco."]
+  },
+  {
+    "id": 9,
+    "nome": "Bacalhau à Brás",
+    "categoria": "Peixe",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Bacalhau Desfiado", "quantidade": 400.0, "unidade": "gramas" },
+      { "item": "Batata Palha", "quantidade": 200.0, "unidade": "gramas" },
+      { "item": "Ovos", "quantidade": 6.0, "unidade": "unidades" }
+    ],
+    "passos": ["Refogue o bacalhau.", "Misture a batata.", "Junte os ovos batidos."]
+  },
+  {
+    "id": 10,
+    "nome": "Massa com Pesto",
+    "categoria": "Vegetariano",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Massa Penne", "quantidade": 450.0, "unidade": "gramas" },
+      { "item": "Molho Pesto", "quantidade": 150.0, "unidade": "gramas" },
+      { "item": "Pinhões", "quantidade": 30.0, "unidade": "gramas" }
+    ],
+    "passos": ["Coza a massa.", "Misture o pesto.", "Polvilhe com pinhões."]
+  },
+  {
+    "id": 11,
+    "nome": "Risotto de Cogumelos",
+    "categoria": "Vegetariano",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Arroz Arbóreo", "quantidade": 320.0, "unidade": "gramas" },
+      { "item": "Cogumelos Paris", "quantidade": 300.0, "unidade": "gramas" },
+      { "item": "Manteiga", "quantidade": 50.0, "unidade": "gramas" }
+    ],
+    "passos": ["Refogue o arroz.", "Adicione caldo aos poucos.", "Finalize com manteiga."]
+  },
+  {
+    "id": 12,
+    "nome": "Tacos de Carne",
+    "categoria": "Carne",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Tortilhas", "quantidade": 8.0, "unidade": "unidades" },
+      { "item": "Carne de Vaca", "quantidade": 400.0, "unidade": "gramas" },
+      { "item": "Abacate", "quantidade": 1.0, "unidade": "unidade" }
+    ],
+    "passos": ["Cozinhe a carne.", "Prepare o abacate.", "Monte as tortilhas."]
+  },
+  {
+    "id": 13,
+    "nome": "Salmão Grelhado",
+    "categoria": "Peixe",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Lombos de Salmão", "quantidade": 4.0, "unidade": "unidades" },
+      { "item": "Batatas Primor", "quantidade": 500.0, "unidade": "gramas" },
+      { "item": "Espargos", "quantidade": 1.0, "unidade": "molho" }
+    ],
+    "passos": ["Grelhe o salmão.", "Coza as batatas.", "Salteie os espargos."]
+  },
+  {
+    "id": 14,
+    "nome": "Strogonoff de Carne",
+    "categoria": "Carne",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Carne de Vaca", "quantidade": 500.0, "unidade": "gramas" },
+      { "item": "Natas", "quantidade": 200.0, "unidade": "ml" },
+      { "item": "Mostarda", "quantidade": 1.0, "unidade": "colher de sopa" }
+    ],
+    "passos": ["Salteie a carne.", "Junte a mostarda.", "Envolva as natas."]
+  },
+  {
+    "id": 15,
+    "nome": "Salada Grega",
+    "categoria": "Vegetariano",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Queijo Feta", "quantidade": 200.0, "unidade": "gramas" },
+      { "item": "Pepino", "quantidade": 1.0, "unidade": "unidade" },
+      { "item": "Azeitonas", "quantidade": 50.0, "unidade": "gramas" }
+    ],
+    "passos": ["Corte o queijo.", "Fatie o pepino.", "Misture com azeitonas."]
+  },
+  {
+    "id": 16,
+    "nome": "Frango à Brás",
+    "categoria": "Carne",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Frango Desfiado", "quantidade": 400.0, "unidade": "gramas" },
+      { "item": "Batata Palha", "quantidade": 200.0, "unidade": "gramas" },
+      { "item": "Ovos", "quantidade": 6.0, "unidade": "unidades" }
+    ],
+    "passos": ["Refogue o frango.", "Adicione a batata.", "Ligue com os ovos."]
+  },
+  {
+    "id": 17,
+    "nome": "Frango Estufado com Arroz",
+    "categoria": "Carne",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Coxas de Frango", "quantidade": 4.0, "unidade": "unidades" },
+      { "item": "Arroz Agulha", "quantidade": 250.0, "unidade": "gramas" },
+      { "item": "Vinho Branco", "quantidade": 100.0, "unidade": "ml" }
+    ],
+    "passos": ["Doure o frango.", "Refogue com vinho.", "Coza o arroz no molho."]
+  },
+  {
+    "id": 18,
+    "nome": "Bacalhau com Natas",
+    "categoria": "Peixe",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Bacalhau Desfiado", "quantidade": 500.0, "unidade": "gramas" },
+      { "item": "Natas", "quantidade": 400.0, "unidade": "ml" },
+      { "item": "Batata em Cubos", "quantidade": 400.0, "unidade": "gramas" }
+    ],
+    "passos": ["Frite as batatas.", "Refogue o bacalhau.", "Leve ao forno com natas."]
+  },
+  {
+    "id": 19,
+    "nome": "Arroz de Bacalhau",
+    "categoria": "Peixe",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Bacalhau", "quantidade": 300.0, "unidade": "gramas" },
+      { "item": "Arroz Carolino", "quantidade": 300.0, "unidade": "gramas" },
+      { "item": "Pimentos", "quantidade": 1.0, "unidade": "unidade" }
+    ],
+    "passos": ["Faça um refogado.", "Junte o bacalhau.", "Adicione arroz e água."]
+  },
+  {
+    "id": 20,
+    "nome": "Hambúrguer de Carne de Vaca",
+    "categoria": "Carne",
+    "doses_base": 2,
+    "ingredientes": [
+      { "item": "Carne de Vaca Picada", "quantidade": 300.0, "unidade": "gramas" },
+      { "item": "Pão de Hambúrguer", "quantidade": 2.0, "unidade": "unidades" },
+      { "item": "Bacon", "quantidade": 40.0, "unidade": "gramas" }
+    ],
+    "passos": ["Molde a carne.", "Grelhe o hambúrguer.", "Monte o pão."]
+  },
+  {
+    "id": 21,
+    "nome": "Carne de Vaca com Brócolos",
+    "categoria": "Carne",
+    "doses_base": 3,
+    "ingredientes": [
+      { "item": "Tiras de Carne de Vaca", "quantidade": 400.0, "unidade": "gramas" },
+      { "item": "Brócolos", "quantidade": 300.0, "unidade": "gramas" },
+      { "item": "Molho de Soja", "quantidade": 50.0, "unidade": "ml" }
+    ],
+    "passos": ["Salteie a carne.", "Junte os brócolos.", "Tempere com soja."]
+  },
+  {
+    "id": 22,
+    "nome": "Salada de Grão e Atum",
+    "categoria": "Peixe",
+    "doses_base": 2,
+    "ingredientes": [
+      { "item": "Grão de Bico Cozido", "quantidade": 400.0, "unidade": "gramas" },
+      { "item": "Atum em Lata", "quantidade": 2.0, "unidade": "unidades" },
+      { "item": "Salsa", "quantidade": 1.0, "unidade": "molho" }
+    ],
+    "passos": ["Misture o grão e atum.", "Pique a salsa.", "Tempere com vinagre."]
+  },
+  {
+    "id": 23,
+    "nome": "Arroz de Cogumelos e Espinafres",
+    "categoria": "Vegetariano",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Arroz Agulha", "quantidade": 300.0, "unidade": "gramas" },
+      { "item": "Cogumelos Paris", "quantidade": 250.0, "unidade": "gramas" },
+      { "item": "Espinafres Frescos", "quantidade": 200.0, "unidade": "gramas" }
+    ],
+    "passos": ["Refogue os cogumelos.", "Adicione o arroz.", "Junte espinafres no fim."]
+  },
+  {
+    "id": 24,
+    "nome": "Quiche de Vegetais",
+    "categoria": "Vegetariano",
+    "doses_base": 6,
+    "ingredientes": [
+      { "item": "Massa Quebrada", "quantidade": 1.0, "unidade": "unidade" },
+      { "item": "Ovos", "quantidade": 4.0, "unidade": "unidades" },
+      { "item": "Brócolos e Cenoura", "quantidade": 300.0, "unidade": "gramas" }
+    ],
+    "passos": ["Forre a tarteira.", "Misture ovos e vegetais.", "Leve ao forno."]
+  },
+  {
+    "id": 25,
+    "nome": "Tacos de Peixe",
+    "categoria": "Peixe",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Filetes de Peixe Branco", "quantidade": 400.0, "unidade": "gramas" },
+      { "item": "Tortilhas", "quantidade": 8.0, "unidade": "unidades" },
+      { "item": "Repolho Roxo", "quantidade": 100.0, "unidade": "gramas" }
+    ],
+    "passos": ["Frite o peixe.", "Prepare o repolho.", "Recheie as tortilhas."]
+  },
+  {
+    "id": 26,
+    "nome": "Bolonhesa de Lentilhas",
+    "categoria": "Vegetariano",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Lentilhas Castanhas", "quantidade": 250.0, "unidade": "gramas" },
+      { "item": "Esparguete", "quantidade": 400.0, "unidade": "gramas" },
+      { "item": "Cenoura Ralada", "quantidade": 1.0, "unidade": "unidade" }
+    ],
+    "passos": ["Coza as lentilhas.", "Faça molho de tomate.", "Misture com a massa."]
+  },
+  {
+    "id": 27,
+    "nome": "Massa com Salmão e Ervilhas",
+    "categoria": "Peixe",
+    "doses_base": 3,
+    "ingredientes": [
+      { "item": "Massa Laços", "quantidade": 300.0, "unidade": "gramas" },
+      { "item": "Salmão Fresco", "quantidade": 250.0, "unidade": "gramas" },
+      { "item": "Ervilhas", "quantidade": 150.0, "unidade": "gramas" }
+    ],
+    "passos": ["Coza a massa e ervilhas.", "Salteie o salmão.", "Misture tudo."]
+  },
+  {
+    "id": 28,
+    "nome": "Frango Assado com Batatas",
+    "categoria": "Carne",
+    "doses_base": 4,
+    "ingredientes": [
+      { "item": "Frango Inteiro", "quantidade": 1.2, "unidade": "kg" },
+      { "item": "Batatas Médias", "quantidade": 6.0, "unidade": "unidades" },
+      { "item": "Alho", "quantidade": 4.0, "unidade": "dentes" }
+    ],
+    "passos": ["Tempere o frango.", "Corte as batatas.", "Leve ao forno."]
+  },
+  {
+    "id": 29,
+    "nome": "Strogonoff de Cogumelos",
+    "categoria": "Vegetariano",
+    "doses_base": 3,
+    "ingredientes": [
+      { "item": "Cogumelos Variados", "quantidade": 500.0, "unidade": "gramas" },
+      { "item": "Natas de Soja", "quantidade": 200.0, "unidade": "ml" },
+      { "item": "Arroz Branco", "quantidade": 200.0, "unidade": "gramas" }
+    ],
+    "passos": ["Salteie os cogumelos.", "Junte as natas.", "Sirva com arroz."]
+  },
+  {
+    "id": 30,
+    "nome": "Espetadas de Frango e Pimento",
+    "categoria": "Carne",
+    "doses_base": 2,
+    "ingredientes": [
+      { "item": "Peito de Frango", "quantidade": 400.0, "unidade": "gramas" },
+      { "item": "Pimentos Verdes", "quantidade": 1.0, "unidade": "unidade" },
+      { "item": "Chouriço", "quantidade": 50.0, "unidade": "gramas" }
+    ],
+    "passos": ["Corte em cubos.", "Monte as espetadas.", "Grelhe uniformemente."]
+  }
+]

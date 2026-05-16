@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="seed">#006A6A</color>
+<!-- Orange and Green theme -->
+    <color name="orange_primary">#FF6B35</color>
+    <color name="orange_light">#FF8C5A</color>
+    <color name="orange_dark">#E55A2B</color>
+
+    <color name="green_accent">#4CAF50</color>
+    <color name="green_light">#81C784</color>
+    <color name="green_dark">#388E3C</color>
+
+    <color name="background">#F5F5F5</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="primary_text">#333333</color>
+    <color name="secondary_text">#666666</color>
+    <color name="category_text">#FF6B35</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>

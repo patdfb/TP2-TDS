@@ -3,6 +3,7 @@ package com.example.recipetds.activities;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -64,14 +65,43 @@ public class MainActivity extends AppCompatActivity implements PantryFragment.On
 
         fragmentManager = getSupportFragmentManager();
         
-        // Initialize fragments
-        recipeListFragment = new RecipeListFragment();
+        if (savedInstanceState != null) {
+            String json = savedInstanceState.getString("user_ingredients", null);
+            if (json != null) {
+                Type type = new TypeToken<List<Ingredient>>() {}.getType();
+                List<Ingredient> restored = new Gson().fromJson(json, type);
+                userIngredients.clear();
+                userIngredients.addAll(restored);
+            }
+
+            recipeListFragment = (RecipeListFragment) fragmentManager.findFragmentByTag("RECIPE_LIST");
+            pantryFragment = (PantryFragment) fragmentManager.findFragmentByTag("PANTRY");
+            
+            int selectedTab = savedInstanceState.getInt("selected_tab", 0);
+            TabLayout.Tab tab = tabLayout.getTabAt(selectedTab);
+            if (tab != null) {
+                tab.select();
+            }
+        }
+
+        if (recipeListFragment == null) {
+            recipeListFragment = new RecipeListFragment();
+        }
         recipeListFragment.updatePantry(userIngredients);
-        pantryFragment = new PantryFragment();
+        
+        if (pantryFragment == null) {
+            pantryFragment = new PantryFragment();
+        }
         pantryFragment.setInitialPantry(userIngredients);
 
-        // Set default fragment
-        showFragment(recipeListFragment);
+        // Set current fragment based on tab
+        if (tabLayout.getSelectedTabPosition() == 0) {
+            showFragment(recipeListFragment, "RECIPE_LIST");
+            fabAddIngredient.setVisibility(View.GONE);
+        } else {
+            showFragment(pantryFragment, "PANTRY");
+            fabAddIngredient.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setupViews() {
@@ -103,10 +133,10 @@ public class MainActivity extends AppCompatActivity implements PantryFragment.On
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
-                    showFragment(recipeListFragment);
+                    showFragment(recipeListFragment, "RECIPE_LIST");
                     fabAddIngredient.setVisibility(View.GONE);
                 } else {
-                    showFragment(pantryFragment);
+                    showFragment(pantryFragment, "PANTRY");
                     fabAddIngredient.setVisibility(View.VISIBLE);
                 }
             }
@@ -127,10 +157,20 @@ public class MainActivity extends AppCompatActivity implements PantryFragment.On
         });
     }
 
-    private void showFragment(Fragment fragment) {
+    private void showFragment(Fragment fragment, String tag) {
+        if (fragment.isAdded() && fragment.isVisible()) {
+            return;
+        }
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
+        transaction.replace(R.id.fragment_container, fragment, tag);
         transaction.commit();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("selected_tab", tabLayout.getSelectedTabPosition());
+        outState.putString("user_ingredients", new Gson().toJson(userIngredients));
     }
 
     @Override

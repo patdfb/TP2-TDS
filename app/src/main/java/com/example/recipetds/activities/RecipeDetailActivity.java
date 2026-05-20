@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.recipetds.R;
 import com.example.recipetds.models.Ingredient;
@@ -49,10 +50,15 @@ public class RecipeDetailActivity extends AppCompatActivity {
         if (recipeId != -1) {
             currentRecipe = RecipeRepository.getInstance(this).getRecipeById(recipeId);
             if (currentRecipe != null) {
-                int baseDoses = currentRecipe.getBase_doses() > 0 ? currentRecipe.getBase_doses() : 4;
-                editTextServings.setText(String.valueOf(baseDoses));
+                int servingsToDisplay;
+                if (savedInstanceState != null) {
+                    servingsToDisplay = savedInstanceState.getInt("selected_servings", currentRecipe.getBase_doses());
+                } else {
+                    servingsToDisplay = currentRecipe.getBase_doses() > 0 ? currentRecipe.getBase_doses() : 4;
+                }
                 
-                displayRecipe(currentRecipe, baseDoses);
+                editTextServings.setText(String.valueOf(servingsToDisplay));
+                displayRecipe(currentRecipe, servingsToDisplay);
                 setupServingsInput();
             }
         }
@@ -107,19 +113,13 @@ public class RecipeDetailActivity extends AppCompatActivity {
                     for (Ingredient userIng : userIngredients) {
                         if (reqName.contains(userIng.getItem().toLowerCase()) ||
                             userIng.getItem().toLowerCase().contains(reqName)) {
-                            // Check if quantity is enough if units match
                             if (reqIng.getUnit().equalsIgnoreCase(userIng.getUnit())) {
                                 if (userIng.getQuantity() >= (reqIng.getQuantity() * scaleFactor)) {
                                     hasIngredient = true;
                                     break;
                                 }
                             } else {
-                                // If units don't match, we assume we have it but don't know quantity
-                                // unless we implement a conversion table.
-                                // To follow the user's request of "less than quantity needed", 
-                                // we'll be strict if the unit is the same.
-                                // If unit is different, we currently fallback to name matching.
-                                hasIngredient = true; 
+                                hasIngredient = true;
                                 break;
                             }
                         }
@@ -162,6 +162,19 @@ public class RecipeDetailActivity extends AppCompatActivity {
                 }
             }
             textViewSteps.setText(stepsText.toString());
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String input = editTextServings.getText().toString();
+        if (!input.isEmpty()) {
+            try {
+                outState.putInt("selected_servings", Integer.parseInt(input));
+            } catch (NumberFormatException e) {
+                // Ignore
+            }
         }
     }
 

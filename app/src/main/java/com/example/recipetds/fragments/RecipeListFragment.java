@@ -25,7 +25,9 @@ import com.example.recipetds.models.Ingredient;
 import com.example.recipetds.models.Recipe;
 import com.example.recipetds.repository.RecipeRepository;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -47,6 +49,16 @@ public class RecipeListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recipe_list, container, false);
+
+        if (savedInstanceState != null) {
+            currentSearchQuery = savedInstanceState.getString("search_query", "");
+            currentCategory = savedInstanceState.getString("category", "All");
+            String json = savedInstanceState.getString("user_ingredients", null);
+            if (json != null) {
+                Type type = new TypeToken<List<Ingredient>>() {}.getType();
+                userIngredients = new Gson().fromJson(json, type);
+            }
+        }
 
         repository = RecipeRepository.getInstance(requireContext());
 
@@ -84,6 +96,11 @@ public class RecipeListFragment extends Fragment {
     }
 
     private void setupSearchView() {
+        if (!TextUtils.isEmpty(currentSearchQuery)) {
+            searchView.setQuery(currentSearchQuery, false);
+            searchView.setIconified(false);
+            searchView.clearFocus();
+        }
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -110,27 +127,37 @@ public class RecipeListFragment extends Fragment {
         }
 
         List<String> categories = new ArrayList<>(categorySet);
+        java.util.Collections.sort(categories);
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
                 requireContext(), android.R.layout.simple_spinner_item, categories);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(spinnerAdapter);
 
+        if (!currentCategory.equals("All")) {
+            int position = categories.indexOf(currentCategory);
+            if (position >= 0) {
+                spinnerCategory.setSelection(position);
+            }
+        }
+
         spinnerCategory.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(android.widget.AdapterView<?> parent, View view, int position, long id) {
-                currentCategory = parent.getItemAtPosition(position).toString();
-                loadRecipes();
+                String selectedCategory = parent.getItemAtPosition(position).toString();
+                if (!currentCategory.equals(selectedCategory)) {
+                    currentCategory = selectedCategory;
+                    loadRecipes();
+                }
             }
 
             @Override
             public void onNothingSelected(android.widget.AdapterView<?> parent) {
-                currentCategory = "All";
-                loadRecipes();
             }
         });
     }
 
     private void loadRecipes() {
+        if (adapter == null) return;
         List<Recipe> recipes;
 
         if (TextUtils.isEmpty(currentSearchQuery)) {
@@ -158,9 +185,16 @@ public class RecipeListFragment extends Fragment {
 
         adapter.updateRecipes(recipes);
 
-        if (recipes.isEmpty()) {
+        if (recipes.isEmpty() && isResumed()) {
             makeText(requireContext(), "No recipes found with those ingredients", LENGTH_SHORT).show();
         }
+    }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("search_query", currentSearchQuery);
+        outState.putString("category", currentCategory);
+        outState.putString("user_ingredients", new Gson().toJson(userIngredients));
     }
 }

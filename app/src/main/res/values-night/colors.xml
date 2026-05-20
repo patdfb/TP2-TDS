@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Same brand colors -->
+    <color name="orange_primary">#FF6B35</color>
+    <color name="orange_light">#FF8C5A</color>
+    <color name="orange_dark">#E55A2B</color>
+
+    <color name="green_accent">#4CAF50</color>
+    <color name="green_light">#81C784</color>
+    <color name="green_dark">#388E3C</color>
+
+    <!-- Dark Blue Theme -->
+    <color name="background">#0F172A</color>
+
+    <color name="card_background">#1E293B</color>
+
+    <color name="primary_text">#F8FAFC</color>
+
+    <color name="secondary_text">#CBD5E1</color>
+
+    <color name="category_text">#FFB089</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="black">#000000</color>
+
+</resources>

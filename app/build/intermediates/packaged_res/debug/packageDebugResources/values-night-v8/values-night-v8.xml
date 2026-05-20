@@ -1,4 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Base.Theme.FirstContactApp" parent="Theme.Material3.DayNight.NoActionBar"/>
+    <color name="background">#0F172A</color>
+    <color name="black">#000000</color>
+    <color name="card_background">#1E293B</color>
+    <color name="category_text">#FFB089</color>
+    <color name="green_accent">#4CAF50</color>
+    <color name="green_dark">#388E3C</color>
+    <color name="green_light">#81C784</color>
+    <color name="orange_dark">#E55A2B</color>
+    <color name="orange_light">#FF8C5A</color>
+    <color name="orange_primary">#FF6B35</color>
+    <color name="primary_text">#F8FAFC</color>
+    <color name="secondary_text">#CBD5E1</color>
+    <color name="white">#FFFFFF</color>
+    <style name="CustomAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+
+        <item name="backgroundTint">@color/card_background</item>
+
+    </style>
+    <style name="PopupMenuStyle" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+
+        <item name="android:popupBackground">@color/card_background</item>
+
+    </style>
+    <style name="SpinnerDropDownItem" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:background">@color/card_background</item>
+        <item name="android:padding">12dp</item>
+    </style>
+    <style name="SpinnerItem" parent="Widget.AppCompat.TextView.SpinnerItem">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:padding">12dp</item>
+    </style>
+    <style name="Theme.RecipeTDS" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        
+        <item name="colorPrimary">@color/orange_primary</item>
+        <item name="colorPrimaryVariant">@color/orange_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        
+        <item name="colorSecondary">@color/green_accent</item>
+        <item name="colorSecondaryVariant">@color/green_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        
+        <item name="android:windowBackground">@color/background</item>
+
+        
+        <item name="android:statusBarColor">@color/background</item>
+
+        
+        <item name="popupTheme">@style/PopupMenuStyle</item>
+
+        
+        <item name="materialAlertDialogTheme">@style/CustomAlertDialog</item>
+
+        
+        <item name="spinnerStyle">@style/Widget.AppCompat.Spinner</item>
+        <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItem</item>
+    </style>
 </resources>

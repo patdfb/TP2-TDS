@@ -30,6 +30,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+
+import androidx.appcompat.app.AppCompatDelegate;
+
+import com.google.android.material.appbar.MaterialToolbar;
+
+import android.content.SharedPreferences;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewRecipes;
@@ -52,6 +63,20 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences prefs =
+                getSharedPreferences("settings", MODE_PRIVATE);
+
+        boolean darkMode =
+                prefs.getBoolean("dark_mode", false);
+
+        if (darkMode) {
+            AppCompatDelegate.setDefaultNightMode(
+                    AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(
+                    AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -65,12 +90,14 @@ public class MainActivity extends AppCompatActivity {
         setupCategorySpinner();
         setupTabs();
         setupFab();
+        loadSavedIngredients();
 
         // Load all recipes initially
         loadRecipes();
     }
 
     private void setupViews() {
+
         recyclerViewRecipes = findViewById(R.id.recyclerViewRecipes);
         recyclerViewUserIngredients = findViewById(R.id.recyclerViewUserIngredients);
         searchView = findViewById(R.id.searchView);
@@ -79,6 +106,25 @@ public class MainActivity extends AppCompatActivity {
         layoutRecipes = findViewById(R.id.layoutRecipes);
         layoutIngredients = findViewById(R.id.layoutIngredients);
         fabAddIngredient = findViewById(R.id.fabAddIngredient);
+
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+
+        toolbar.inflateMenu(R.menu.main_menu);
+
+        toolbar.setOnMenuItemClickListener(item -> {
+
+            if (item.getItemId() == R.id.action_settings) {
+
+                Intent intent =
+                        new Intent(this, SettingsActivity.class);
+
+                startActivity(intent);
+
+                return true;
+            }
+
+            return false;
+        });
     }
 
     private void setupRecyclerViews() {
@@ -94,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
         ingredientAdapter = new IngredientListAdapter(ingredient -> {
             userIngredients.remove(ingredient);
+            saveIngredients();
             ingredientAdapter.updateIngredients(userIngredients);
             adapter.updatePantry(userIngredients);
             loadRecipes();
@@ -200,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             double quantity = Double.parseDouble(quantityStr);
                             userIngredients.add(new Ingredient(name, quantity, unit));
+                            saveIngredients();
                             ingredientAdapter.updateIngredients(userIngredients);
                             adapter.updatePantry(userIngredients);
                             loadRecipes();
@@ -210,6 +258,45 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setNegativeButton(R.string.action_cancel, null)
                 .show();
+    }
+
+    private void saveIngredients() {
+
+        SharedPreferences prefs =
+                getSharedPreferences("ingredients", MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = prefs.edit();
+
+        String json =
+                new Gson().toJson(userIngredients);
+
+        editor.putString("user_ingredients", json);
+
+        editor.apply();
+    }
+
+    private void loadSavedIngredients() {
+
+        SharedPreferences prefs =
+                getSharedPreferences("ingredients", MODE_PRIVATE);
+
+        String json =
+                prefs.getString("user_ingredients", null);
+
+        if (json != null) {
+
+            Type type =
+                    new TypeToken<List<Ingredient>>() {}.getType();
+
+            List<Ingredient> savedIngredients =
+                    new Gson().fromJson(json, type);
+
+            userIngredients.clear();
+
+            userIngredients.addAll(savedIngredients);
+
+            ingredientAdapter.updateIngredients(userIngredients);
+        }
     }
 
     private void loadRecipes() {

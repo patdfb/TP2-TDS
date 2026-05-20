@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="units_array">
+        <item>gramas</item>
+        <item>ml</item>
+        <item>unidades</item>
+        <item>colheres de sopa</item>
+        <item>colheres de chá</item>
+        <item>chávenas</item>
+    </string-array>
     <color name="background">#F5F5F5</color>
     <color name="black">#000000</color>
     <color name="card_background">#FFFFFF</color>
@@ -13,7 +21,27 @@
     <color name="primary_text">#333333</color>
     <color name="secondary_text">#666666</color>
     <color name="white">#FFFFFF</color>
+    <string name="action_add">Add</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="add_ingredient_msg">Enter the name of the ingredient:</string>
+    <string name="add_ingredient_title">Add Ingredient</string>
     <string name="app_name">RecipeTDS</string>
+    <string name="back_to_list">Back to List</string>
+    <string name="category_label">Category:</string>
+    <string name="hint_ingredient_name">Ingredient name</string>
+    <string name="hint_quantity">Quantity</string>
+    <string name="hint_servings_default">4</string>
+    <string name="ingredients_label">Ingredients:</string>
+    <string name="msg_dark_mode_todo">Dark mode feature will be implemented here</string>
+    <string name="pantry_title">Your Pantry</string>
+    <string name="remove_ingredient_desc">Remove ingredient</string>
+    <string name="search_query_hint_example">e.g., Frango, Tomate</string>
+    <string name="search_recipes_hint">Search recipes</string>
+    <string name="servings_label">Servings: </string>
+    <string name="steps_label">Steps:</string>
+    <string name="tab_ingredients">My Ingredients</string>
+    <string name="tab_recipes">Recipes</string>
+    <string name="title_settings">Settings</string>
     <style name="Theme.RecipeTDS" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         
         <item name="colorPrimary">@color/orange_primary</item>

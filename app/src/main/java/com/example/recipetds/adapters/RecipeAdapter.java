@@ -4,39 +4,71 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.recipetds.R;
+import com.example.recipetds.models.Ingredient;
 import com.example.recipetds.models.Recipe;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
-    private List<Recipe> recipes;
-    private OnRecipeClickListener listener;
+    private List<Recipe> recipes = new ArrayList<>();
+    private List<Ingredient> userPantry = new ArrayList<>();
+    private final OnRecipeClickListener listener;
 
     public interface OnRecipeClickListener {
         void onRecipeClick(Recipe recipe);
     }
 
     public RecipeAdapter(OnRecipeClickListener listener) {
-        this.recipes = new ArrayList<>();
         this.listener = listener;
     }
 
     public void updateRecipes(List<Recipe> newRecipes) {
-        this.recipes = (newRecipes != null)
-                ? newRecipes
-                : new ArrayList<>();
+        final List<Recipe> oldList = this.recipes;
+        final List<Recipe> newList = newRecipes != null ? newRecipes : new ArrayList<>();
 
-        notifyDataSetChanged();
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffUtil.Callback() {
+            @Override
+            public int getOldListSize() {
+                return oldList.size();
+            }
+
+            @Override
+            public int getNewListSize() {
+                return newList.size();
+            }
+
+            @Override
+            public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+                return oldList.get(oldItemPosition).getId() == newList.get(newItemPosition).getId();
+            }
+
+            @Override
+            public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+                Recipe oldRecipe = oldList.get(oldItemPosition);
+                Recipe newRecipe = newList.get(newItemPosition);
+                return oldRecipe.getName().equals(newRecipe.getName()) &&
+                       oldRecipe.getCategory().equals(newRecipe.getCategory()) &&
+                       oldRecipe.getAvailableIngredientsCount(userPantry) == newRecipe.getAvailableIngredientsCount(userPantry);
+            }
+        });
+
+        this.recipes = newList;
+        diffResult.dispatchUpdatesTo(this);
+    }
+
+    public void updatePantry(List<Ingredient> pantry) {
+        this.userPantry = pantry != null ? pantry : new ArrayList<>();
+        // Since pantry affects all items' available count, we need to refresh the list
+        // DiffUtil can still help if we want, but since it affects the "contents" of every recipe view
+        // relative to the pantry, a simple notifyDataSetChanged is often okay here, 
+        // but let's try to be consistent with DiffUtil.
+        updateRecipes(this.recipes);
     }
 
     @NonNull
@@ -50,22 +82,16 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     @Override
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
         Recipe recipe = recipes.get(position);
-        holder.bind(recipe);
-
-        holder.cardView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onRecipeClick(recipe);
-            }
-        });
+        holder.bind(recipe, userPantry);
+        holder.cardView.setOnClickListener(v -> listener.onRecipeClick(recipe));
     }
 
     @Override
     public int getItemCount() {
-        Log.d("RECIPE_DEBUG", "Recipes: " + recipes.size());
         return recipes.size();
     }
 
-    static class RecipeViewHolder extends RecyclerView.ViewHolder {
+    public static class RecipeViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
         TextView textViewRecipeName;
         TextView textViewRecipeCategory;
@@ -79,16 +105,20 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             textViewIngredientsCount = itemView.findViewById(R.id.textViewIngredientsCount);
         }
 
-        void bind(Recipe recipe) {
+        void bind(Recipe recipe, List<Ingredient> pantry) {
             textViewRecipeName.setText(recipe.getName());
             textViewRecipeCategory.setText(recipe.getCategory());
 
-            if (recipe.getIngredients() != null) {
-                textViewIngredientsCount.setText(
-                        recipe.getIngredients().size() + " ingredients"
-                );
+            int total = recipe.getIngredients() != null ? recipe.getIngredients().size() : 0;
+            int available = recipe.getAvailableIngredientsCount(pantry);
+
+            String status = available + "/" + total + " ingredients available";
+            textViewIngredientsCount.setText(status);
+
+            if (available == total && total > 0) {
+                textViewIngredientsCount.setTextColor(androidx.core.content.ContextCompat.getColor(itemView.getContext(), android.R.color.holo_green_dark));
             } else {
-                textViewIngredientsCount.setText("0 ingredients");
+                textViewIngredientsCount.setTextColor(androidx.core.content.ContextCompat.getColor(itemView.getContext(), android.R.color.darker_gray));
             }
         }
     }

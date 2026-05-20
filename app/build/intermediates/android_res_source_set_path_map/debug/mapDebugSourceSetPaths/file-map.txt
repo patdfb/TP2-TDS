@@ -1,8 +1,8 @@
-com.example.recipetds.app-pngs-0 /Users/inesmatos/Desktop/Universidade/SVDM/TDS/TP2-TDS/app/build/generated/res/pngs/debug
-com.example.recipetds.app-resValues-1 /Users/inesmatos/Desktop/Universidade/SVDM/TDS/TP2-TDS/app/build/generated/res/resValues/debug
-com.example.recipetds.app-updated_navigation_xml-2 /Users/inesmatos/Desktop/Universidade/SVDM/TDS/TP2-TDS/app/build/generated/updated_navigation_xml/debug
-com.example.recipetds.app-packageDebugResources-3 /Users/inesmatos/Desktop/Universidade/SVDM/TDS/TP2-TDS/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
-com.example.recipetds.app-packageDebugResources-4 /Users/inesmatos/Desktop/Universidade/SVDM/TDS/TP2-TDS/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
-com.example.recipetds.app-debug-5 /Users/inesmatos/Desktop/Universidade/SVDM/TDS/TP2-TDS/app/build/intermediates/merged_res/debug/mergeDebugResources
-com.example.recipetds.app-debug-6 /Users/inesmatos/Desktop/Universidade/SVDM/TDS/TP2-TDS/app/src/debug/res
-com.example.recipetds.app-main-7 /Users/inesmatos/Desktop/Universidade/SVDM/TDS/TP2-TDS/app/src/main/res
+com.example.recipetds.app-pngs-0 /Users/patriciabastos/AndroidStudioProjects/TP2-TDS/app/build/generated/res/pngs/debug
+com.example.recipetds.app-resValues-1 /Users/patriciabastos/AndroidStudioProjects/TP2-TDS/app/build/generated/res/resValues/debug
+com.example.recipetds.app-updated_navigation_xml-2 /Users/patriciabastos/AndroidStudioProjects/TP2-TDS/app/build/generated/updated_navigation_xml/debug
+com.example.recipetds.app-packageDebugResources-3 /Users/patriciabastos/AndroidStudioProjects/TP2-TDS/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.example.recipetds.app-packageDebugResources-4 /Users/patriciabastos/AndroidStudioProjects/TP2-TDS/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.example.recipetds.app-debug-5 /Users/patriciabastos/AndroidStudioProjects/TP2-TDS/app/build/intermediates/merged_res/debug/mergeDebugResources
+com.example.recipetds.app-debug-6 /Users/patriciabastos/AndroidStudioProjects/TP2-TDS/app/src/debug/res
+com.example.recipetds.app-main-7 /Users/patriciabastos/AndroidStudioProjects/TP2-TDS/app/src/main/res

@@ -1,7 +1,6 @@
 package com.example.recipetds.repository;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.util.Log;
 
 import com.example.recipetds.models.Recipe;
@@ -22,7 +21,7 @@ public class RecipeRepository {
     private static final String TAG = "RecipeRepository";
     private static RecipeRepository instance;
     private List<Recipe> allRecipes;
-    private Context context;
+    private final Context context;
 
     private RecipeRepository (Context context) {
         this.context = context.getApplicationContext();
@@ -74,6 +73,16 @@ public class RecipeRepository {
 
     public List<Recipe> getAllRecipes() {
         return new ArrayList<>(allRecipes);
+    }
+
+    public Recipe getRecipeById(int id) {
+        if (allRecipes == null) return null;
+        for (Recipe recipe : allRecipes) {
+            if (recipe.getId() == id) {
+                return recipe;
+            }
+        }
+        return null;
     }
 
     public List<Recipe> searchRecipesByIngredients(List<String> ingredients) {

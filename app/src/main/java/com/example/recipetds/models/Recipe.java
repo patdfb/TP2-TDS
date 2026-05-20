@@ -97,4 +97,31 @@ public class Recipe {
 
         return true;
     }
+
+    public int getAvailableIngredientsCount(List<Ingredient> pantry) {
+        if (pantry == null || ingredients == null) return 0;
+        int count = 0;
+        for (Ingredient req : ingredients) {
+            for (Ingredient p : pantry) {
+                if (req.getItem().toLowerCase().contains(p.getItem().toLowerCase()) ||
+                        p.getItem().toLowerCase().contains(req.getItem().toLowerCase())) {
+                    if (req.getUnit().equalsIgnoreCase(p.getUnit())) {
+                        if (p.getQuantity() >= req.getQuantity()) {
+                            count++;
+                            break;
+                        }
+                    } else {
+                        // If units don't match, we count it as "have" for now or handle conversion
+                        count++;
+                        break;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+    public boolean hasAllIngredients(List<Ingredient> pantry) {
+        return ingredients != null && getAvailableIngredientsCount(pantry) == ingredients.size();
+    }
 }

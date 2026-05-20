@@ -24,6 +24,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.example.recipetds.activities.RecipeDetailActivity"
+            android:exported="false"
+            android:label="Recipe Details"
+            android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+
     </application>
 
 </manifest>

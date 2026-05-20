@@ -3614,6 +3614,7 @@ int id transition_transform 0x7f0901f5
 int id triangle 0x7f0901f6
 int id unchecked 0x7f0901f7
 int id uniform 0x7f0901f8
+int id unitInputLayout 0x7f09020e
 int id unlabeled 0x7f0901f9
 int id up 0x7f0901fa
 int id useLogo 0x7f0901fb
@@ -3902,6 +3903,7 @@ int string hide_bottom_view_on_scroll_behavior 0x7f11003a
 int string hint_ingredient_name 0x7f11003b
 int string hint_quantity 0x7f11003c
 int string hint_servings_default 0x7f11003d
+int string hint_unit 0x7f1100bb
 int string icon_content_description 0x7f11003e
 int string ingredients_label 0x7f11003f
 int string item_view_role_description 0x7f110040

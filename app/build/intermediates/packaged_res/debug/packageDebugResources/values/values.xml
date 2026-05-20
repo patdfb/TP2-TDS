@@ -31,6 +31,7 @@
     <string name="hint_ingredient_name">Ingredient name</string>
     <string name="hint_quantity">Quantity</string>
     <string name="hint_servings_default">4</string>
+    <string name="hint_unit">Unit</string>
     <string name="ingredients_label">Ingredients:</string>
     <string name="msg_dark_mode_todo">Dark mode feature will be implemented here</string>
     <string name="pantry_title">Your Pantry</string>

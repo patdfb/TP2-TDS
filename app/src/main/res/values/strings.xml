@@ -29,4 +29,5 @@
         <item>colheres de chá</item>
         <item>chávenas</item>
     </string-array>
+    <string name="hint_unit">Unit</string>
 </resources>

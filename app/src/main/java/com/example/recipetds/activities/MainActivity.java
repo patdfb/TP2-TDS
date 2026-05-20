@@ -43,6 +43,8 @@ import android.content.SharedPreferences;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 
+import android.widget.AutoCompleteTextView;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewRecipes;
@@ -230,12 +232,12 @@ public class MainActivity extends AppCompatActivity {
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_ingredient, null);
         EditText editName = dialogView.findViewById(R.id.editTextName);
         EditText editQuantity = dialogView.findViewById(R.id.editTextQuantity);
-        Spinner spinnerUnit = dialogView.findViewById(R.id.spinnerUnit);
+        AutoCompleteTextView spinnerUnit = dialogView.findViewById(R.id.spinnerUnit); // ← só esta linha
 
         ArrayAdapter<CharSequence> unitAdapter = ArrayAdapter.createFromResource(this,
-                R.array.units_array, android.R.layout.simple_spinner_item);
-        unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                R.array.units_array, android.R.layout.simple_list_item_1);
         spinnerUnit.setAdapter(unitAdapter);
+        spinnerUnit.setText(unitAdapter.getItem(0).toString(), false);
 
         new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.add_ingredient_title)
@@ -243,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton(R.string.action_add, (dialog, which) -> {
                     String name = editName.getText().toString().trim();
                     String quantityStr = editQuantity.getText().toString().trim();
-                    String unit = spinnerUnit.getSelectedItem().toString();
+                    String unit = spinnerUnit.getText().toString(); // ← getSelectedItem() → getText()
 
                     if (!name.isEmpty() && !quantityStr.isEmpty()) {
                         try {

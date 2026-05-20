@@ -1,182 +1,138 @@
 [
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "com.example.recipetds.app-debug-31:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.recipetds.app-debug-31:/layout_item_recipe.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/layout/item_recipe.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-mdpi/ic_launcher_background.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-mdpi/ic_launcher_foreground.png"
+        "merged": "com.example.recipetds.app-debug-31:/layout_activity_recipe_detail.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/layout/activity_recipe_detail.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-hdpi/ic_launcher_foreground.png"
+        "merged": "com.example.recipetds.app-debug-31:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/layout_dialog_add_ingredient.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/layout/dialog_add_ingredient.xml"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xxhdpi_ic_launcher_background.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xxhdpi/ic_launcher_background.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "com.example.recipetds.app-debug-31:/layout_dialog_add_ingredient.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/layout/dialog_add_ingredient.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/xml_backup_rules.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/xml/backup_rules.xml"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xhdpi/ic_launcher_foreground.png"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xxhdpi/ic_launcher_monochrome.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/layout_activity_recipe_detail.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/layout/activity_recipe_detail.xml"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-hdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/drawable_spinner_border.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/drawable/spinner_border.xml"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/layout_activity_main.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/layout/activity_main.xml"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxhdpi/ic_launcher_foreground.png"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-mdpi_ic_launcher_monochrome.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-mdpi/ic_launcher_monochrome.png"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/drawable/ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxhdpi_ic_launcher_background.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxhdpi/ic_launcher_background.png"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxxhdpi/ic_launcher_monochrome.png"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxxhdpi_ic_launcher_background.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxxhdpi/ic_launcher_background.png"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxxhdpi/ic_launcher_foreground.png"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-mdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
-    },
-    {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/xml_data_extraction_rules.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/xml/data_extraction_rules.xml"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
         "merged": "com.example.recipetds.app-debug-31:/drawable_ic_spinner_arrow.xml.flat",
         "source": "com.example.recipetds.app-main-33:/drawable/ic_spinner_arrow.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.recipetds.app-debug-31:/menu_main_menu.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/menu/main_menu.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/menu_main_menu.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/menu/main_menu.xml"
+        "merged": "com.example.recipetds.app-debug-31:/drawable_spinner_border.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/drawable/spinner_border.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/drawable_ic_launcher_background.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/drawable/ic_launcher_background.xml"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxhdpi/ic_launcher_monochrome.png"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-mdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-mdpi/ic_launcher_monochrome.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/layout_activity_settings.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/layout/activity_settings.xml"
+        "merged": "com.example.recipetds.app-debug-31:/layout_activity_settings.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/layout/activity_settings.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-hdpi_ic_launcher_background.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-hdpi/ic_launcher_background.png"
+        "merged": "com.example.recipetds.app-debug-31:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xhdpi_ic_launcher_background.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xhdpi/ic_launcher_background.png"
+        "merged": "com.example.recipetds.app-debug-31:/xml_backup_rules.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/xml/backup_rules.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "com.example.recipetds.app-debug-31:/layout_item_user_ingredient.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/layout/item_user_ingredient.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/layout_item_recipe.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/layout/item_recipe.xml"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xxxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-mdpi_ic_launcher_background.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-mdpi/ic_launcher_background.png"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "com.example.recipetds.app-debug-31:/layout_activity_main.xml.flat",
+        "source": "com.example.recipetds.app-main-33:/layout/activity_main.xml"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/layout_item_user_ingredient.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/layout/item_user_ingredient.xml"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xhdpi_ic_launcher_monochrome.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xhdpi/ic_launcher_monochrome.png"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xhdpi_ic_launcher_background.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xhdpi/ic_launcher_background.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-hdpi_ic_launcher_monochrome.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-hdpi/ic_launcher_monochrome.png"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-mdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xhdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xhdpi/ic_launcher_monochrome.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-hdpi/ic_launcher.png"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-hdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-hdpi/ic_launcher_monochrome.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xxxhdpi/ic_launcher_background.png"
     },
     {
-        "merged": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-debug-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "/Users/inesmatos/.gradle/daemon/9.3.1/com.example.recipetds.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-xxxhdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.recipetds.app-debug-31:/mipmap-hdpi_ic_launcher_background.png.flat",
+        "source": "com.example.recipetds.app-main-33:/mipmap-hdpi/ic_launcher_background.png"
     }
 ]

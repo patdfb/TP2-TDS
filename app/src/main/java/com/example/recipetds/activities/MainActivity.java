@@ -37,6 +37,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import android.content.SharedPreferences;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
@@ -235,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
         unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerUnit.setAdapter(unitAdapter);
 
-        new AlertDialog.Builder(this)
+        new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.add_ingredient_title)
                 .setView(dialogView)
                 .setPositiveButton(R.string.action_add, (dialog, which) -> {

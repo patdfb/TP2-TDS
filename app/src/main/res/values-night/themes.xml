@@ -55,7 +55,8 @@
     <style name="CustomAlertDialog"
         parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
 
-        <item name="backgroundTint">@color/card_background</item>
+        <item name="colorSurface">@color/card_background</item>
+        <item name="elevationOverlayEnabled">false</item>
 
     </style>
 

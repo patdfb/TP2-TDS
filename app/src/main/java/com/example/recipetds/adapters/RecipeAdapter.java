@@ -29,7 +29,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     public void updateRecipes(List<Recipe> newRecipes) {
-        final List<Recipe> oldList = this.recipes;
+        final List<Recipe> oldList = new ArrayList<>(this.recipes);
         final List<Recipe> newList = newRecipes != null ? newRecipes : new ArrayList<>();
 
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffUtil.Callback() {
@@ -63,12 +63,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     public void updatePantry(List<Ingredient> pantry) {
-        this.userPantry = pantry != null ? pantry : new ArrayList<>();
-        // Since pantry affects all items' available count, we need to refresh the list
-        // DiffUtil can still help if we want, but since it affects the "contents" of every recipe view
-        // relative to the pantry, a simple notifyDataSetChanged is often okay here, 
-        // but let's try to be consistent with DiffUtil.
-        updateRecipes(this.recipes);
+        this.userPantry = pantry != null ? new ArrayList<>(pantry) : new ArrayList<>();
+        notifyDataSetChanged();
     }
 
     @NonNull

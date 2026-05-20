@@ -209,6 +209,8 @@ public class MainActivity extends AppCompatActivity {
                     layoutRecipes.setVisibility(View.VISIBLE);
                     layoutIngredients.setVisibility(View.GONE);
                     fabAddIngredient.setVisibility(View.GONE);
+                    adapter.updatePantry(userIngredients);
+                    loadRecipes();
                 } else {
                     layoutRecipes.setVisibility(View.GONE);
                     layoutIngredients.setVisibility(View.VISIBLE);

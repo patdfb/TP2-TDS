@@ -88,10 +88,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     public static class RecipeViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
-        TextView textViewRecipeName;
-        TextView textViewRecipeCategory;
-        TextView textViewIngredientsCount;
+        final CardView cardView;
+        final TextView textViewRecipeName;
+        final TextView textViewRecipeCategory;
+        final TextView textViewIngredientsCount;
 
         RecipeViewHolder(@NonNull View itemView) {
             super(itemView);

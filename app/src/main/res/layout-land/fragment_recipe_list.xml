@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutRecipes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
     <!-- Search Section -->
-
-    <!-- Filter Section -->
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -21,7 +18,8 @@
             android:layout_margin="16dp"
             android:layout_weight="1"
             app:cardCornerRadius="8dp"
-            app:cardElevation="2dp">
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/card_background">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -47,17 +45,19 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- Filter Section -->
         <androidx.cardview.widget.CardView
             android:layout_width="336dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            app:cardBackgroundColor="@color/card_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:padding="12dp">
 
                 <TextView
@@ -70,10 +70,20 @@
 
                 <Spinner
                     android:id="@+id/spinnerCategory"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:contentDescription="@string/category_label" />
+                    android:background="@null"
+                    android:contentDescription="@string/category_label"
+                    android:padding="12dp"/>
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="12dp"
+                    android:contentDescription="@string/arrow"
+                    android:src="@drawable/ic_spinner_arrow"
+                    app:tint="@color/orange_primary" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

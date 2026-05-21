@@ -5,14 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,17 +15,31 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.recipetds.R;
 import com.example.recipetds.adapters.IngredientListAdapter;
 import com.example.recipetds.models.Ingredient;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PantryFragment extends Fragment {
+public class PantryFragment extends Fragment implements AddIngredientDialogFragment.AddIngredientListener {
 
     private RecyclerView recyclerViewUserIngredients;
     private IngredientListAdapter ingredientAdapter;
     private final List<Ingredient> userIngredients = new ArrayList<>();
     
     private OnPantryChangedListener listener;
+
+    @Override
+    public void onIngredientAdded(Ingredient ingredient) {
+        userIngredients.add(ingredient);
+        if (ingredientAdapter != null) {
+            ingredientAdapter.updateIngredients(userIngredients);
+        }
+        if (listener != null) {
+            listener.onPantryChanged(userIngredients);
+        }
+    }
 
     public void setInitialPantry(List<Ingredient> pantry) {
         userIngredients.clear();
@@ -55,12 +64,27 @@ public class PantryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            String json = savedInstanceState.getString("user_ingredients", null);
+            if (json != null) {
+                Type type = new TypeToken<List<Ingredient>>() {}.getType();
+                List<Ingredient> saved = new Gson().fromJson(json, type);
+                userIngredients.clear();
+                userIngredients.addAll(saved);
+            }
+        }
         View view = inflater.inflate(R.layout.fragment_pantry, container, false);
 
         recyclerViewUserIngredients = view.findViewById(R.id.recyclerViewUserIngredients);
         setupRecyclerView();
 
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("user_ingredients", new Gson().toJson(userIngredients));
     }
 
     private void setupRecyclerView() {
@@ -77,43 +101,7 @@ public class PantryFragment extends Fragment {
     }
 
     public void showAddIngredientDialog() {
-        View dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_add_ingredient, null);
-        EditText editName = dialogView.findViewById(R.id.editTextName);
-        EditText editQuantity = dialogView.findViewById(R.id.editTextQuantity);
-        AutoCompleteTextView unitAutoComplete = dialogView.findViewById(R.id.spinnerUnit);
-
-        String[] units = getResources().getStringArray(R.array.units_array);
-        ArrayAdapter<String> unitAdapter = new ArrayAdapter<>(requireContext(),
-                android.R.layout.simple_dropdown_item_1line, units);
-        unitAutoComplete.setAdapter(unitAdapter);
-        
-        // Set a default unit
-        if (units.length > 0) {
-            unitAutoComplete.setText(units[0], false);
-        }
-
-        new AlertDialog.Builder(requireContext())
-                .setTitle(R.string.add_ingredient_title)
-                .setView(dialogView)
-                .setPositiveButton(R.string.action_add, (dialog, which) -> {
-                    String name = editName.getText().toString().trim();
-                    String quantityStr = editQuantity.getText().toString().trim();
-                    String unit = unitAutoComplete.getText().toString();
-
-                    if (!name.isEmpty() && !quantityStr.isEmpty()) {
-                        try {
-                            double quantity = Double.parseDouble(quantityStr);
-                            userIngredients.add(new Ingredient(name, quantity, unit));
-                            ingredientAdapter.updateIngredients(userIngredients);
-                            if (listener != null) {
-                                listener.onPantryChanged(userIngredients);
-                            }
-                        } catch (NumberFormatException e) {
-                            Toast.makeText(requireContext(), "Invalid quantity", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                })
-                .setNegativeButton(R.string.action_cancel, null)
-                .show();
+        AddIngredientDialogFragment dialog = new AddIngredientDialogFragment();
+        dialog.show(getChildFragmentManager(), "AddIngredientDialog");
     }
 }

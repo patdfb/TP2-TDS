@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="Theme.RecipeTDS"
         parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -58,6 +58,7 @@
     <style name="CustomAlertDialog"
         parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
 
+        <item name="colorSurface">@color/card_background</item>
         <item name="backgroundTint">@color/card_background</item>
 
     </style>

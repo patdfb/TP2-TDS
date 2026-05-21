@@ -6,12 +6,9 @@ import android.util.Log;
 import com.example.recipetds.models.Recipe;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -56,9 +53,9 @@ public class RecipeRepository {
     }
 
     private String loadJsonFromAssets(String filename) {
-        String json = null;
+        String json;
         try {
-            InputStream is = context.getAssets().open(filename);
+            InputStream is = context.getAssets().open("receitas.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);

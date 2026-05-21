@@ -98,9 +98,9 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewName;
-        TextView textViewQuantity;
-        ImageButton buttonRemove;
+        final TextView textViewName;
+        final TextView textViewQuantity;
+        final ImageButton buttonRemove;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);

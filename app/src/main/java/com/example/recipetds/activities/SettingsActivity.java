@@ -13,8 +13,6 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private SwitchMaterial switchDarkMode;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         toolbar.setNavigationOnClickListener(v -> finish());
 
-        switchDarkMode = findViewById(R.id.switchDarkMode);
+        SwitchMaterial switchDarkMode = findViewById(R.id.switchDarkMode);
 
         SharedPreferences prefs =
                 getSharedPreferences("settings", MODE_PRIVATE);

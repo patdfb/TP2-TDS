@@ -3,11 +3,9 @@
 
     <!-- Orange and Green theme -->
     <color name="orange_primary">#FF6B35</color>
-    <color name="orange_light">#FF8C5A</color>
     <color name="orange_dark">#E55A2B</color>
 
     <color name="green_accent">#4CAF50</color>
-    <color name="green_light">#81C784</color>
     <color name="green_dark">#388E3C</color>
 
     <!-- Light Theme -->

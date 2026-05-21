@@ -1,5 +1,7 @@
 package com.example.recipetds.models;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 public class Ingredient {
     @SerializedName("item")
@@ -41,6 +43,7 @@ public class Ingredient {
         this.unit = unit;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return quantity + " " + unit + " " + item;

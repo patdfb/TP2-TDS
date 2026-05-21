@@ -10,8 +10,11 @@
     <string name="search_recipes_hint">Search recipes</string>
     <string name="category_label">Category:</string>
     <string name="pantry_title">Your Pantry</string>
+    <string name="search_pantry_hint">Search in your pantry</string>
     <string name="add_ingredient_title">Add Ingredient</string>
+    <string name="edit_ingredient_title">Edit Ingredient</string>
     <string name="action_add">Add</string>
+    <string name="action_save">Save</string>
     <string name="action_cancel">Cancel</string>
     <string name="remove_ingredient_desc">Remove ingredient</string>
     <string name="title_settings">Settings</string>

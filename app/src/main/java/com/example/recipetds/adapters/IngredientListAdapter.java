@@ -17,13 +17,14 @@ import java.util.Locale;
 public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAdapter.ViewHolder> {
 
     private List<Ingredient> ingredients;
-    private final OnIngredientRemovedListener listener;
+    private final OnIngredientInteractionListener listener;
 
-    public interface OnIngredientRemovedListener {
+    public interface OnIngredientInteractionListener {
         void onIngredientRemoved(Ingredient ingredient);
+        void onIngredientClicked(Ingredient ingredient, int position);
     }
 
-    public IngredientListAdapter(OnIngredientRemovedListener listener) {
+    public IngredientListAdapter(OnIngredientInteractionListener listener) {
         this.ingredients = new ArrayList<>();
         this.listener = listener;
     }
@@ -45,7 +46,6 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
 
             @Override
             public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-                // If they have unique IDs, use them. Otherwise, compare name and unit.
                 Ingredient oldItem = oldList.get(oldItemPosition);
                 Ingredient newItem = newList.get(newItemPosition);
                 return oldItem.getItem().equals(newItem.getItem()) && 
@@ -88,6 +88,12 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         holder.buttonRemove.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onIngredientRemoved(ingredient);
+            }
+        });
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onIngredientClicked(ingredient, position);
             }
         });
     }

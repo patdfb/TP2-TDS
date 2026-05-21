@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.recipetds.R;
+import com.example.recipetds.activities.FavoritesActivity;
 import com.example.recipetds.activities.RecipeDetailActivity;
 import com.example.recipetds.adapters.RecipeAdapter;
 import com.example.recipetds.models.Ingredient;
@@ -44,10 +46,23 @@ public class RecipeListFragment extends Fragment {
     private String currentSearchQuery = "";
     private String currentCategory = "All";
     private List<Ingredient> userIngredients = new ArrayList<>();
+    private boolean isFavoritesOnly = false;
+
+    public static RecipeListFragment newInstance(boolean favoritesOnly) {
+        RecipeListFragment fragment = new RecipeListFragment();
+        Bundle args = new Bundle();
+        args.putBoolean("favorites_only", favoritesOnly);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (getArguments() != null) {
+            isFavoritesOnly = getArguments().getBoolean("favorites_only", false);
+        }
+
         View view = inflater.inflate(R.layout.fragment_recipe_list, container, false);
 
         if (savedInstanceState != null) {
@@ -65,6 +80,21 @@ public class RecipeListFragment extends Fragment {
         recyclerViewRecipes = view.findViewById(R.id.recyclerViewRecipes);
         searchView = view.findViewById(R.id.searchView);
         spinnerCategory = view.findViewById(R.id.spinnerCategory);
+        Button buttonViewFavorites = view.findViewById(R.id.buttonViewFavorites);
+
+        if (isFavoritesOnly) {
+            if (buttonViewFavorites != null) {
+                buttonViewFavorites.setVisibility(View.GONE);
+            }
+        } else {
+            if (buttonViewFavorites != null) {
+                buttonViewFavorites.setOnClickListener(v -> {
+                    Intent intent = new Intent(requireContext(), FavoritesActivity.class);
+                    intent.putExtra("USER_INGREDIENTS_JSON", new Gson().toJson(userIngredients));
+                    startActivity(intent);
+                });
+            }
+        }
 
         setupRecyclerView();
         setupSearchView();
@@ -75,19 +105,38 @@ public class RecipeListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Reload in case favorites were changed in another tab or detail view
+        loadRecipes();
+    }
+
     public void updatePantry(List<Ingredient> pantry) {
         this.userIngredients = pantry;
         if (adapter != null) {
             adapter.updatePantry(pantry);
+            loadRecipes();
         }
     }
 
     private void setupRecyclerView() {
-        adapter = new RecipeAdapter(recipe -> {
-            Intent intent = new Intent(requireContext(), RecipeDetailActivity.class);
-            intent.putExtra("RECIPE_ID", recipe.getId());
-            intent.putExtra("USER_INGREDIENTS_JSON", new Gson().toJson(userIngredients));
-            startActivity(intent);
+        adapter = new RecipeAdapter(repository, new RecipeAdapter.OnRecipeInteractionListener() {
+            @Override
+            public void onRecipeClick(Recipe recipe) {
+                Intent intent = new Intent(requireContext(), RecipeDetailActivity.class);
+                intent.putExtra("RECIPE_ID", recipe.getId());
+                intent.putExtra("USER_INGREDIENTS_JSON", new Gson().toJson(userIngredients));
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFavoriteToggle(Recipe recipe, boolean isFavorite) {
+                repository.setFavorite(recipe.getId(), isFavorite);
+                if (isFavoritesOnly && !isFavorite) {
+                    loadRecipes(); // Remove from list if we are in favorites view
+                }
+            }
         });
 
         recyclerViewRecipes.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -158,19 +207,43 @@ public class RecipeListFragment extends Fragment {
 
     private void loadRecipes() {
         if (adapter == null) return;
+        
         List<Recipe> recipes;
-
-        if (TextUtils.isEmpty(currentSearchQuery)) {
-            recipes = repository.getAllRecipes();
+        if (isFavoritesOnly) {
+            recipes = repository.getFavoriteRecipes();
         } else {
-            List<String> searchIngredientsNames = new ArrayList<>();
-            String[] queryParts = currentSearchQuery.toLowerCase().trim().split(",");
-            for (String part : queryParts) {
-                if (!part.trim().isEmpty()) {
-                    searchIngredientsNames.add(part.trim());
+            recipes = repository.getAllRecipes();
+        }
+
+        // Apply search filter if present
+        if (!TextUtils.isEmpty(currentSearchQuery)) {
+            List<Recipe> searchResults;
+            if (currentSearchQuery.contains(",")) {
+                // Search by multiple ingredients
+                List<String> searchIngredientsNames = new ArrayList<>();
+                String[] queryParts = currentSearchQuery.toLowerCase().trim().split(",");
+                for (String part : queryParts) {
+                    if (!part.trim().isEmpty()) {
+                        searchIngredientsNames.add(part.trim());
+                    }
+                }
+                searchResults = repository.searchRecipesByIngredients(searchIngredientsNames);
+            } else {
+                // Search by single ingredient name or recipe name (more flexible)
+                searchResults = repository.searchRecipesByIngredientString(currentSearchQuery);
+            }
+
+            // Filter current list (either all or favorites) by search results
+            List<Recipe> filteredList = new ArrayList<>();
+            for (Recipe recipe : recipes) {
+                for (Recipe searchResult : searchResults) {
+                    if (recipe.getId() == searchResult.getId()) {
+                        filteredList.add(recipe);
+                        break;
+                    }
                 }
             }
-            recipes = repository.searchRecipesByIngredients(searchIngredientsNames);
+            recipes = filteredList;
         }
 
         if (!currentCategory.equals("All")) {

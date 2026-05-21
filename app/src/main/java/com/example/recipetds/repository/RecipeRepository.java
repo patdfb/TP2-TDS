@@ -1,6 +1,7 @@
 package com.example.recipetds.repository;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.recipetds.models.Recipe;
@@ -13,15 +14,18 @@ import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class RecipeRepository {
     private static final String TAG = "RecipeRepository";
     private static RecipeRepository instance;
     private List<Recipe> allRecipes;
     private final Context context;
+    private final SharedPreferences favoritePrefs;
 
     private RecipeRepository (Context context) {
         this.context = context.getApplicationContext();
+        this.favoritePrefs = context.getSharedPreferences("favorites", Context.MODE_PRIVATE);
         loadRecipes();
     }
 
@@ -34,17 +38,16 @@ public class RecipeRepository {
 
     private void loadRecipes() {
         try {
-            // Read JSON file from assets folder
-            String jsonString = loadJsonFromAssets("receitas.json");
+            String jsonString = loadJsonFromAssets();
 
-            if (jsonString != null) {
+            if (jsonString != null && !jsonString.isEmpty()) {
                 Gson gson = new Gson();
                 Type recipeListType = new TypeToken<List<Recipe>>() {}.getType();
                 allRecipes = gson.fromJson(jsonString, recipeListType);
                 Log.d(TAG, "Loaded " + allRecipes.size() + " recipes");
             } else {
                 allRecipes = new ArrayList<>();
-                Log.e(TAG, "Failed to load recipes JSON");
+                Log.e(TAG, "Failed to load recipes JSON: String is null or empty");
             }
         } catch (Exception e) {
             Log.e(TAG, "Error loading recipes: " + e.getMessage());
@@ -52,24 +55,18 @@ public class RecipeRepository {
         }
     }
 
-    private String loadJsonFromAssets(String filename) {
-        String json;
-        try {
-            InputStream is = context.getAssets().open("receitas.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, StandardCharsets.UTF_8);
+    private String loadJsonFromAssets() {
+        try (InputStream is = context.getAssets().open("receitas.json");
+             Scanner scanner = new Scanner(is, StandardCharsets.UTF_8.name())) {
+            return scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
         } catch (IOException ex) {
-            ex.printStackTrace();
+            Log.e(TAG, "IOException reading assets: " + ex.getMessage());
             return null;
         }
-        return json;
     }
 
     public List<Recipe> getAllRecipes() {
-        return new ArrayList<>(allRecipes);
+        return allRecipes != null ? new ArrayList<>(allRecipes) : new ArrayList<>();
     }
 
     public Recipe getRecipeById(int id) {
@@ -95,7 +92,6 @@ public class RecipeRepository {
         }
         return filteredRecipes;
     }
-
     public List<Recipe> searchRecipesByIngredientString(String searchText) {
         if (searchText == null || searchText.trim().isEmpty()) {
             return getAllRecipes();
@@ -108,5 +104,23 @@ public class RecipeRepository {
         }
 
         return searchRecipesByIngredients(ingredientList);
+    }
+
+    public boolean isFavorite(int recipeId) {
+        return favoritePrefs.getBoolean(String.valueOf(recipeId), false);
+    }
+
+    public void setFavorite(int recipeId, boolean favorite) {
+        favoritePrefs.edit().putBoolean(String.valueOf(recipeId), favorite).apply();
+    }
+
+    public List<Recipe> getFavoriteRecipes() {
+        List<Recipe> favorites = new ArrayList<>();
+        for (Recipe recipe : allRecipes) {
+            if (isFavorite(recipe.getId())) {
+                favorites.add(recipe);
+            }
+        }
+        return favorites;
     }
 }

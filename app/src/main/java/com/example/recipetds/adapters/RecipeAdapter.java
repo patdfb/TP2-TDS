@@ -1,16 +1,21 @@
 package com.example.recipetds.adapters;
 
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.recipetds.R;
 import com.example.recipetds.models.Ingredient;
 import com.example.recipetds.models.Recipe;
+import com.example.recipetds.repository.RecipeRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +23,16 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     private List<Recipe> recipes = new ArrayList<>();
     private List<Ingredient> userPantry = new ArrayList<>();
-    private final OnRecipeClickListener listener;
+    private final OnRecipeInteractionListener listener;
+    private final RecipeRepository repository;
 
-    public interface OnRecipeClickListener {
+    public interface OnRecipeInteractionListener {
         void onRecipeClick(Recipe recipe);
+        void onFavoriteToggle(Recipe recipe, boolean isFavorite);
     }
 
-    public RecipeAdapter(OnRecipeClickListener listener) {
+    public RecipeAdapter(RecipeRepository repository, OnRecipeInteractionListener listener) {
+        this.repository = repository;
         this.listener = listener;
     }
 
@@ -54,7 +62,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
                 Recipe newRecipe = newList.get(newItemPosition);
                 return oldRecipe.getName().equals(newRecipe.getName()) &&
                        oldRecipe.getCategory().equals(newRecipe.getCategory()) &&
-                       oldRecipe.getAvailableIngredientsCount(userPantry) == newRecipe.getAvailableIngredientsCount(userPantry);
+                       oldRecipe.getAvailableIngredientsCount(userPantry) == newRecipe.getAvailableIngredientsCount(userPantry) &&
+                       repository.isFavorite(oldRecipe.getId()) == repository.isFavorite(newRecipe.getId());
             }
         });
 
@@ -78,8 +87,16 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     @Override
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
         Recipe recipe = recipes.get(position);
-        holder.bind(recipe, userPantry);
+        boolean isFavorite = repository.isFavorite(recipe.getId());
+        holder.bind(recipe, userPantry, isFavorite);
+        
         holder.cardView.setOnClickListener(v -> listener.onRecipeClick(recipe));
+        
+        holder.buttonFavorite.setOnClickListener(v -> {
+            boolean currentStatus = repository.isFavorite(recipe.getId());
+            listener.onFavoriteToggle(recipe, !currentStatus);
+            notifyItemChanged(position);
+        });
     }
 
     @Override
@@ -92,6 +109,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         final TextView textViewRecipeName;
         final TextView textViewRecipeCategory;
         final TextView textViewIngredientsCount;
+        final ImageButton buttonFavorite;
 
         RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,9 +117,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             textViewRecipeName = itemView.findViewById(R.id.textViewRecipeName);
             textViewRecipeCategory = itemView.findViewById(R.id.textViewRecipeCategory);
             textViewIngredientsCount = itemView.findViewById(R.id.textViewIngredientsCount);
+            buttonFavorite = itemView.findViewById(R.id.buttonFavorite);
         }
 
-        void bind(Recipe recipe, List<Ingredient> pantry) {
+        void bind(Recipe recipe, List<Ingredient> pantry, boolean isFavorite) {
             textViewRecipeName.setText(recipe.getName());
             textViewRecipeCategory.setText(recipe.getCategory());
 
@@ -112,9 +131,17 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             textViewIngredientsCount.setText(status);
 
             if (available == total && total > 0) {
-                textViewIngredientsCount.setTextColor(androidx.core.content.ContextCompat.getColor(itemView.getContext(), android.R.color.holo_green_dark));
+                textViewIngredientsCount.setTextColor(ContextCompat.getColor(itemView.getContext(), android.R.color.holo_green_dark));
             } else {
-                textViewIngredientsCount.setTextColor(androidx.core.content.ContextCompat.getColor(itemView.getContext(), android.R.color.darker_gray));
+                textViewIngredientsCount.setTextColor(ContextCompat.getColor(itemView.getContext(), android.R.color.darker_gray));
+            }
+
+            if (isFavorite) {
+                buttonFavorite.setImageResource(R.drawable.ic_star_filled);
+                buttonFavorite.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(itemView.getContext(), R.color.orange_primary)));
+            } else {
+                buttonFavorite.setImageResource(R.drawable.ic_star_outline);
+                buttonFavorite.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(itemView.getContext(), android.R.color.darker_gray)));
             }
         }
     }

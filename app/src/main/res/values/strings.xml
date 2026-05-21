@@ -5,11 +5,12 @@
     <string name="servings_label">Servings: </string>
     <string name="steps_label">Steps:</string>
     <string name="back_to_list">Back to List</string>
+    <string name="view_favorites">My Favorite Recipes</string>
+    <string name="favorites_title">Your Favorites</string>
     <string name="tab_recipes">Recipes</string>
     <string name="tab_ingredients">My Ingredients</string>
     <string name="search_recipes_hint">Search recipes</string>
     <string name="category_label">Category:</string>
-    <string name="pantry_title">Your Pantry</string>
     <string name="search_pantry_hint">Search in your pantry</string>
     <string name="add_ingredient_title">Add Ingredient</string>
     <string name="edit_ingredient_title">Edit Ingredient</string>
@@ -33,4 +34,5 @@
     </string-array>
     <string name="hint_unit">Unit</string>
     <string name="arrow">arrow</string>
+    <string name="favorite">Favorite</string>
 </resources>

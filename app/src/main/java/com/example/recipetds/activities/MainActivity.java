@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements PantryFragment.On
         }
 
         if (recipeListFragment == null) {
-            recipeListFragment = new RecipeListFragment();
+            recipeListFragment = RecipeListFragment.newInstance(false);
         }
         recipeListFragment.updatePantry(userIngredients);
         
@@ -94,14 +94,7 @@ public class MainActivity extends AppCompatActivity implements PantryFragment.On
         }
         pantryFragment.setInitialPantry(userIngredients);
 
-        // Set current fragment based on tab
-        if (tabLayout.getSelectedTabPosition() == 0) {
-            showFragment(recipeListFragment, "RECIPE_LIST");
-            fabAddIngredient.setVisibility(View.GONE);
-        } else {
-            showFragment(pantryFragment, "PANTRY");
-            fabAddIngredient.setVisibility(View.VISIBLE);
-        }
+        updateFragmentVisibility(tabLayout.getSelectedTabPosition());
     }
 
     private void setupViews() {
@@ -132,13 +125,7 @@ public class MainActivity extends AppCompatActivity implements PantryFragment.On
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 0) {
-                    showFragment(recipeListFragment, "RECIPE_LIST");
-                    fabAddIngredient.setVisibility(View.GONE);
-                } else {
-                    showFragment(pantryFragment, "PANTRY");
-                    fabAddIngredient.setVisibility(View.VISIBLE);
-                }
+                updateFragmentVisibility(tab.getPosition());
             }
 
             @Override
@@ -147,6 +134,16 @@ public class MainActivity extends AppCompatActivity implements PantryFragment.On
             @Override
             public void onTabReselected(TabLayout.Tab tab) {}
         });
+    }
+
+    private void updateFragmentVisibility(int position) {
+        if (position == 0) {
+            showFragment(recipeListFragment, "RECIPE_LIST");
+            fabAddIngredient.setVisibility(View.GONE);
+        } else {
+            showFragment(pantryFragment, "PANTRY");
+            fabAddIngredient.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setupFab() {

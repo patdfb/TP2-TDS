@@ -37,6 +37,11 @@
         <activity
             android:name=".activities.SettingsActivity" />
 
+        <activity
+            android:name=".activities.FavoritesActivity"
+            android:label="@string/favorites_title"
+            android:parentActivityName=".activities.MainActivity" />
+
     </application>
 
 </manifest>

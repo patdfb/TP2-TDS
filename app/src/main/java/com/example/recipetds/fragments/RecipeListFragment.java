@@ -35,6 +35,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.pm.PackageManager;
+import android.speech.RecognizerIntent;
+import android.widget.ImageButton;
+import java.util.Locale;
+
 public class RecipeListFragment extends Fragment {
 
     private RecyclerView recyclerViewRecipes;
@@ -47,6 +54,10 @@ public class RecipeListFragment extends Fragment {
     private String currentCategory = "All";
     private List<Ingredient> userIngredients = new ArrayList<>();
     private boolean isFavoritesOnly = false;
+
+    private static final int VOICE_SEARCH_REQUEST_CODE = 101;
+
+    private ImageButton buttonVoiceSearch;
 
     public static RecipeListFragment newInstance(boolean favoritesOnly) {
         RecipeListFragment fragment = new RecipeListFragment();
@@ -81,6 +92,11 @@ public class RecipeListFragment extends Fragment {
         searchView = view.findViewById(R.id.searchView);
         spinnerCategory = view.findViewById(R.id.spinnerCategory);
         Button buttonViewFavorites = view.findViewById(R.id.buttonViewFavorites);
+
+        buttonVoiceSearch = view.findViewById(R.id.buttonVoiceSearch);
+        if (buttonVoiceSearch != null) {
+            buttonVoiceSearch.setOnClickListener(v -> startVoiceSearch());
+        }
 
         if (isFavoritesOnly) {
             if (buttonViewFavorites != null) {
@@ -203,6 +219,51 @@ public class RecipeListFragment extends Fragment {
             public void onNothingSelected(android.widget.AdapterView<?> parent) {
             }
         });
+    }
+
+    private void startVoiceSearch() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Say an ingredient name...");
+
+        PackageManager pm = requireContext().getPackageManager();
+        if (intent.resolveActivity(pm) != null) {
+            try {
+                startActivityForResult(intent, VOICE_SEARCH_REQUEST_CODE);
+            } catch (ActivityNotFoundException e) {
+                makeText(requireContext(),
+                        "Voice recognition not available on this device",
+                        LENGTH_SHORT).show();
+            }
+        } else {
+            makeText(requireContext(),
+                    "Voice recognition not supported",
+                    LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == VOICE_SEARCH_REQUEST_CODE
+                && resultCode == Activity.RESULT_OK
+                && data != null) {
+
+            ArrayList<String> results =
+                    data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+
+            if (results != null && !results.isEmpty()) {
+                String spokenText = results.get(0);
+
+                currentSearchQuery = spokenText;
+                searchView.setQuery(spokenText, false);
+                searchView.setIconified(false);
+                loadRecipes();
+            }
+        }
     }
 
     private void loadRecipes() {

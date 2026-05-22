@@ -25,18 +25,19 @@
             android:layout_marginBottom="16dp">
 
             <TextView
+                android:id="@+id/textViewServingsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/servings_label"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:labelFor="@id/editTextServings" />
 
             <EditText
                 android:id="@+id/editTextServings"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:hint="@string/hint_servings_default"
                 android:textAlignment="center"
                 android:importantForAutofill="no" />
         </LinearLayout>

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background">
+    android:orientation="vertical">
 
     <!-- Toolbar -->
     <com.google.android.material.appbar.MaterialToolbar
@@ -14,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/orange_primary"
-        app:title="Settings"
+        app:title="@string/title_settings"
         app:titleTextColor="@android:color/white"
-        app:navigationIcon="@android:drawable/ic_media_previous"
+        app:navigationIcon="?attr/homeAsUpIndicator"
         app:navigationIconTint="@android:color/white"/>
 
     <!-- Content -->
@@ -49,17 +46,19 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/textViewDarkMode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dark Mode"
+                        android:text="@string/label_dark_mode"
                         android:textStyle="bold"
                         android:textSize="18sp"
-                        android:textColor="@color/primary_text"/>
+                        android:textColor="@color/primary_text"
+                        android:labelFor="@+id/switchDarkMode"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Enable dark blue theme"
+                        android:text="@string/desc_dark_mode"
                         android:textSize="14sp"
                         android:textColor="@color/secondary_text"
                         android:layout_marginTop="4dp"/>
@@ -69,7 +68,8 @@
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:id="@+id/switchDarkMode"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/label_dark_mode"/>
 
             </LinearLayout>
 

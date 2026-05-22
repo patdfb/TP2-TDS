@@ -31,8 +31,8 @@
         <!-- Main Activity -->
         <activity
             android:name="com.example.recipetds.activities.MainActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:exported="true" >
+            android:exported="true"
+            android:resizeableActivity="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,6 +49,10 @@
                 android:value=".activities.MainActivity" />
         </activity>
         <activity android:name="com.example.recipetds.activities.SettingsActivity" />
+        <activity
+            android:name="com.example.recipetds.activities.FavoritesActivity"
+            android:label="@string/favorites_title"
+            android:parentActivityName="com.example.recipetds.activities.MainActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
